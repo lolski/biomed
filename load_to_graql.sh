@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -n "$1" ]
-
+then
     $1/graql.sh -k biomed -f ontology.gql
     $1/graql.sh -k biomed -f rules/rules.gql
 
