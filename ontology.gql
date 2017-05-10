@@ -57,7 +57,8 @@ insert
 "interaction" sub relation
 	relates disease
 	relates affected
-	plays fact;
+	plays fact
+	has degree;
 "disease" sub role;
 "affected" sub role;
 
@@ -82,7 +83,8 @@ insert
 "gene-target" sub relation
 	relates targeted-gene
 	relates targeting-mirna
-	plays fact;
+	plays fact
+	has degree;
 "targeted-gene" sub role;
 "targeting-mirna" sub role;
 
@@ -142,3 +144,5 @@ insert
 "drug-name" sub resource
 	datatype string;
 
+"degree" sub resource
+  datatype long;
