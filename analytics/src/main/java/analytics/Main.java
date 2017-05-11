@@ -28,13 +28,21 @@ public class Main {
 
     public static void main(String[] args) {
         // initialise the connection to engine
-        try (GraknSession session = Grakn.session(Grakn.DEFAULT_URI, keyspace)) {
+        String engineHostname = Grakn.DEFAULT_URI;
+        if (args.length>0) {engineHostname = args[0];}
+        try (GraknSession session = Grakn.session(engineHostname, keyspace)) {
             testConnection(session);
+            System.out.println("Calculating degrees...");
             Map<Long, Set<String>> degrees = degreeOfRelation(session, "interaction", Sets.newHashSet("interaction","reference"));
+            System.out.println("Persisting degrees...");
             persistDegrees(session, degrees);
+            System.out.println("Finished persisting.");
+            System.out.println("Calculating degrees...");
             degrees = degreeOfRelation(session, "gene-target", Sets.newHashSet("gene-target","reference"));
+            System.out.println("Persisting degrees...");
             persistDegrees(session, degrees);
-            System.out.println("Finished calculation!");
+            System.out.println("Finished persisting.");
+            System.out.println("Task complete.");
         }
     }
 
@@ -86,6 +94,7 @@ public class Main {
 
             // if there is no data throw error
             if (result.isEmpty()) {throw new RuntimeException("Expected data is not present in the graph.");}
+            System.out.println("Connection OK.");
         }
     }
 }
