@@ -7,7 +7,7 @@ import ai.grakn.GraknTxType;
 import ai.grakn.concept.ConceptId;
 import ai.grakn.graql.Graql;
 import ai.grakn.graql.MatchQuery;
-import ai.grakn.graql.Var;
+import ai.grakn.graql.VarPattern;
 import ai.grakn.graql.admin.Answer;
 import ai.grakn.graql.analytics.DegreeQuery;
 import com.google.common.collect.Sets;
@@ -51,7 +51,7 @@ public class Main {
         try (GraknGraph graph = session.open(GraknTxType.WRITE)) {
 
             // add the degrees to the cluster
-            Set<Var> degreeMutation = new HashSet<>();
+            Set<VarPattern> degreeMutation = new HashSet<>();
             degrees.forEach((degree, concepts) -> {
                 concepts.forEach(concept -> {
                     degreeMutation.add(Graql.var().id(ConceptId.of(concept)).has("degree",degree));
