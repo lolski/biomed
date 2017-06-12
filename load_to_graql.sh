@@ -31,7 +31,7 @@ then
 
     cd analytics
     mvn clean package
-    java -jar target/degrees-0.13.0-SNAPSHOT-allinone.jar localhost:4567 
+    java -jar target/degrees-0.14.0-SNAPSHOT-allinone.jar localhost:4567 
 
 else
   echo "Usage: ./loader.sh <Grakn-bin-directory>"
