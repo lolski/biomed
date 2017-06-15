@@ -4,6 +4,7 @@ if [ -n "$1" ]
 then
     $1/graql.sh -k biomed -f ontology.gql
     $1/graql.sh -k biomed -f rules/rules.gql
+    $1/graql.sh -k biomed -f rules/new-rules.gql
 
     $1/migration.sh csv -k biomed -t migrators/hsa-mature-migrator.gql  -i data/hsa-mature.tsv
 
@@ -31,7 +32,7 @@ then
 
     cd analytics
     mvn clean package
-    java -jar target/degrees-0.14.0-SNAPSHOT-allinone.jar localhost:4567 
+    java -jar target/degrees-0.14.0-SNAPSHOT-allinone.jar localhost:4567
 
 else
   echo "Usage: ./loader.sh <Grakn-bin-directory>"
