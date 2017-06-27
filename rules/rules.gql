@@ -11,19 +11,10 @@ $inferMature isa inference-rule
  rhs
  {(disease: $z, affected: $b) isa interaction;};
 
- $inferGene isa inference-rule
- lhs
- {$z isa cancer;
-  $a isa mature;
-  (disease: $z, affected: $a);
-  $b isa gene;
-  (targeting-mirna: $a, targeted-gene: $b);}
- rhs
- {(disease: $z, affected: $b) isa interaction;};
-
 $inferCancerDrug isa inference-rule
 lhs {
-  (disease: $c, affected: $g);
+  (disease: $c, affected: $b);
+  (targeting-mirna: $b, targeted-gene: $g);
   (influenced: $g, chemical: $d);
 }
 rhs {
