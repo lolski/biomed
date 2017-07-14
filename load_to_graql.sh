@@ -31,8 +31,9 @@ then
     $1/migration.sh csv -k biomed -s \| -t migrators/interactions-migrator.gql -i data/interactions.tsv
 
     cd analytics
-    mvn clean package
-    java -jar target/degrees-0.14.0-SNAPSHOT-allinone.jar localhost:4567
+    python degrees.py
+    #mvn clean package
+    #java -jar target/degrees-0.15.0-SNAPSHOT-allinone.jar localhost:4567
 
 else
   echo "Usage: ./loader.sh <Grakn-bin-directory>"
