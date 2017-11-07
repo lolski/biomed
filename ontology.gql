@@ -1,4 +1,4 @@
-insert
+define
 
 "article" sub entity
 	plays publication
@@ -95,54 +95,54 @@ insert
 "target" sub role;
 "therapy" sub role;
 
-"starting-position" sub resource
+"starting-position" sub attribute
 	datatype string;
-"end-position" sub resource
+"end-position" sub attribute
 	datatype string;
-"sequence" sub resource
-	datatype string;
-
-"species" sub resource
+"sequence" sub attribute
 	datatype string;
 
-"chromosome" sub resource
+"species" sub attribute
 	datatype string;
 
-"strand" sub resource
+"chromosome" sub attribute
 	datatype string;
 
-"accession-number" sub resource
+"strand" sub attribute
 	datatype string;
 
-"pmid" sub resource
+"accession-number" sub attribute
 	datatype string;
 
-"title" sub resource
+"pmid" sub attribute
 	datatype string;
 
-"abstract" sub resource
+"title" sub attribute
 	datatype string;
 
-"abstract" sub resource
+"abstract" sub attribute
 	datatype string;
 
-"mirID" sub resource
+"abstract" sub attribute
 	datatype string;
 
-"name" sub resource
+"mirID" sub attribute
 	datatype string;
 
-"gene-symbol" sub resource
+"name" sub attribute
 	datatype string;
 
-"entrez-gene-id" sub resource
+"gene-symbol" sub attribute
 	datatype string;
 
-"action-type" sub resource
+"entrez-gene-id" sub attribute
+	datatype string;
+
+"action-type" sub attribute
   datatype string;
 
-"drug-name" sub resource
+"drug-name" sub attribute
 	datatype string;
 
-"degree" sub resource
+"degree" sub attribute
   datatype long;

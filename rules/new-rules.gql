@@ -1,11 +1,11 @@
-insert
+define
 
-referenced-treatment sub relation
+referenced-treatment sub relationship
   relates target
   relates therapy;
 
-$referencedTreatments isa inference-rule
-lhs {
+referencedTreatments sub rule
+when {
   $cancer isa cancer;
   $sl isa stem-loop;
   (disease: $cancer, affected: $sl) isa interaction  has degree >= 4;
@@ -16,7 +16,7 @@ lhs {
   (influenced: $gene, chemical: $drug) isa action; $drug isa drug;
 }
 
-rhs {
+then {
   (target: $cancer, therapy: $drug) isa referenced-treatment;
 };
 
