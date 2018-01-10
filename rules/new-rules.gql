@@ -1,5 +1,7 @@
 define
 
+## Only used in the following rule. It's the same as a treatment, except that it requires a certain
+# numbers of papers documenting the connection
 referenced-treatment sub relationship
   relates target
   relates therapy;

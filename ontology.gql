@@ -6,6 +6,9 @@ define
 	has title
 	has abstract;
 
+## Micro RNA (or mirna) are some of the central entities in this dataset. They exists in two form:
+# stem loop and mature. The mature version of a mirna is in fact a smal portion of the stem loop
+# and it is the mirna that interacts with genes
 "mirna" sub entity
 	is-abstract
 	plays sequence-in-genome
@@ -26,6 +29,7 @@ define
 	plays target
 	has name;
 
+## This is a location in the human genome
 "location" sub entity
 	plays position
 	has chromosome
@@ -34,6 +38,7 @@ define
 	has end-position
 	has strand;
 
+## A coding portion of the DNA
 "gene" sub entity
 	plays targeted-gene
 	plays affected
@@ -46,6 +51,7 @@ define
 	plays therapy
 	plays chemical;
 
+## The relationship between a drug and some other entity (mirna, gene, protein etc.)
 "action" sub relation
 	has action-type
 	relates chemical
@@ -54,6 +60,8 @@ define
 "chemical" sub role;
 
 
+## The relationship between cancer and a biological entity (mostl mirna in this dataset). As refernced
+# by some article
 "interaction" sub relation
 	relates disease
 	relates affected
@@ -62,24 +70,29 @@ define
 "disease" sub role;
 "affected" sub role;
 
+## Relationship that links a coding sequence to its location
 "coordinate" sub relation
 	relates sequence-in-genome
 	relates position;
 "sequence-in-genome" sub role;
 "position" sub role;
 
+## Relationship connecting biological interactions and the articles on which they are published
 "reference" sub relation
 	relates fact
 	relates publication;
 "fact" sub role;
 "publication" sub role;
 
+## Relationship between the stem-loop version and the mature version of the mirna
 "mirna-precursor" sub relation
 	relates precursor
 	relates matured;
 "precursor" sub role;
 "matured" sub role;
 
+## Relationships between the mirna and the genes they target in biological interactions, as
+# documented in papers
 "gene-target" sub relation
 	relates targeted-gene
 	relates targeting-mirna
@@ -88,6 +101,7 @@ define
 "targeted-gene" sub role;
 "targeting-mirna" sub role;
 
+## Relationship between drugs and cancers (only inferred)
 "treatment" sub relation
 	relates target
 	relates therapy;
@@ -95,6 +109,7 @@ define
 "target" sub role;
 "therapy" sub role;
 
+## Coordinates of a genetic sequence and actual nucleotide sequence
 "starting-position" sub attribute
 	datatype string;
 "end-position" sub attribute
@@ -102,18 +117,23 @@ define
 "sequence" sub attribute
 	datatype string;
 
+## Only Homo Sapiens in this dataset
 "species" sub attribute
 	datatype string;
 
+## The chromosome number of the chromosome where the genetic location is found
 "chromosome" sub attribute
 	datatype string;
 
+## DNA has two complementary strands: this identifies the strand to which the genetic locatio refers to
 "strand" sub attribute
 	datatype string;
 
+## One of the way in which mirnas are catalogued
 "accession-number" sub attribute
 	datatype string;
 
+## PubMed identifier of an article
 "pmid" sub attribute
 	datatype string;
 
@@ -123,26 +143,27 @@ define
 "abstract" sub attribute
 	datatype string;
 
-"abstract" sub attribute
-	datatype string;
-
+## Another way of cataloguing mirnas
 "mirID" sub attribute
 	datatype string;
 
 "name" sub attribute
 	datatype string;
 
+## Standard gene code
 "gene-symbol" sub attribute
 	datatype string;
-
+## Gene identifier in the entrez database
 "entrez-gene-id" sub attribute
 	datatype string;
 
+## Positive or negative interaction
 "action-type" sub attribute
   datatype string;
 
 "drug-name" sub attribute
 	datatype string;
 
+## The degree of a documented interaction. I.e. in how many papers it appears
 "degree" sub attribute
   datatype long;

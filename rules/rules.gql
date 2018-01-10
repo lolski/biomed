@@ -1,6 +1,6 @@
 define
 
-
+## This rule makes sure that if a cancer is related to a stem-loop mirna, it is also related to its mature version
 inferMature sub rule
 when
  {$z isa cancer;
@@ -11,6 +11,7 @@ when
  then
  {(disease: $z, affected: $b) isa interaction;};
 
+## This links drugs and cancer via mirna and genes
 inferCancerDrug sub rule
 when {
   (disease: $c, affected: $b);
