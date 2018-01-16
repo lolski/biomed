@@ -52,7 +52,7 @@ define
 	plays chemical;
 
 ## The relationship between a drug and some other entity (mirna, gene, protein etc.)
-"action" sub relation
+"action" sub relationship
 	has action-type
 	relates chemical
 	relates influenced;
@@ -62,7 +62,7 @@ define
 
 ## The relationship between cancer and a biological entity (mostl mirna in this dataset). As refernced
 # by some article
-"interaction" sub relation
+"interaction" sub relationship
 	relates disease
 	relates affected
 	plays fact
@@ -71,21 +71,21 @@ define
 "affected" sub role;
 
 ## Relationship that links a coding sequence to its location
-"coordinate" sub relation
+"coordinate" sub relationship
 	relates sequence-in-genome
 	relates position;
 "sequence-in-genome" sub role;
 "position" sub role;
 
 ## Relationship connecting biological interactions and the articles on which they are published
-"reference" sub relation
+"reference" sub relationship
 	relates fact
 	relates publication;
 "fact" sub role;
 "publication" sub role;
 
 ## Relationship between the stem-loop version and the mature version of the mirna
-"mirna-precursor" sub relation
+"mirna-precursor" sub relationship
 	relates precursor
 	relates matured;
 "precursor" sub role;
@@ -93,7 +93,7 @@ define
 
 ## Relationships between the mirna and the genes they target in biological interactions, as
 # documented in papers
-"gene-target" sub relation
+"gene-target" sub relationship
 	relates targeted-gene
 	relates targeting-mirna
 	plays fact
@@ -102,7 +102,7 @@ define
 "targeting-mirna" sub role;
 
 ## Relationship between drugs and cancers (only inferred)
-"treatment" sub relation
+"treatment" sub relationship
 	relates target
 	relates therapy;
 
