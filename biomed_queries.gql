@@ -1,0 +1,40 @@
+
+# Explicit query
+
+match  $cancer isa cancer has name "breast cancer";
+($cancer, $sl); $sl isa stem-loop;
+($sl, $m); $m isa mature;
+($m, $gene); $gene isa gene;
+($gene, $drug); $drug isa drug;
+offset 0; limit 1;
+
+# Same, but with rule (explanation must work)
+
+match  $cancer isa cancer has name "breast cancer";
+$drug isa drug;
+($cancer, $drug); offset 0; limit 1;
+
+
+# High degree relations
+
+match $a isa cancer;
+$b isa stem-loop;
+$c (disease: $a, affected: $b); $c has degree >= 10;
+$d isa mature;
+($b, $d);
+$e isa gene;
+$f ($d, $e); $f has degree >= 10;
+limit 1; offset 0;
+
+# This has behaved weirdly at some point
+
+match $a isa cancer; $b isa stem-loop;
+$c (disease: $a, affected: $b);
+($b, $d);
+$e isa gene;
+$f ($d, $e);
+limit 1; offset 0;
+
+# This must work with the explanation as well
+
+match $x isa referenced-treatment; offset 0; limit 2;
