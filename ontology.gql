@@ -1,4 +1,4 @@
-insert
+define
 
 "article" sub entity
 	plays publication
@@ -6,6 +6,9 @@ insert
 	has title
 	has abstract;
 
+## Micro RNA (or mirna) are some of the central entities in this dataset. They exists in two form:
+# stem loop and mature. The mature version of a mirna is in fact a smal portion of the stem loop
+# and it is the mirna that interacts with genes
 "mirna" sub entity
 	is-abstract
 	plays sequence-in-genome
@@ -26,6 +29,7 @@ insert
 	plays target
 	has name;
 
+## This is a location in the human genome
 "location" sub entity
 	plays position
 	has chromosome
@@ -34,6 +38,7 @@ insert
 	has end-position
 	has strand;
 
+## A coding portion of the DNA
 "gene" sub entity
 	plays targeted-gene
 	plays affected
@@ -46,7 +51,8 @@ insert
 	plays therapy
 	plays chemical;
 
-"action" sub relation
+## The relationship between a drug and some other entity (mirna, gene, protein etc.)
+"action" sub relationship
 	has action-type
 	relates chemical
 	relates influenced;
@@ -54,7 +60,9 @@ insert
 "chemical" sub role;
 
 
-"interaction" sub relation
+## The relationship between cancer and a biological entity (mostl mirna in this dataset). As refernced
+# by some article
+"interaction" sub relationship
 	relates disease
 	relates affected
 	plays fact
@@ -62,25 +70,30 @@ insert
 "disease" sub role;
 "affected" sub role;
 
-"coordinate" sub relation
+## Relationship that links a coding sequence to its location
+"coordinate" sub relationship
 	relates sequence-in-genome
 	relates position;
 "sequence-in-genome" sub role;
 "position" sub role;
 
-"reference" sub relation
+## Relationship connecting biological interactions and the articles on which they are published
+"reference" sub relationship
 	relates fact
 	relates publication;
 "fact" sub role;
 "publication" sub role;
 
-"mirna-precursor" sub relation
+## Relationship between the stem-loop version and the mature version of the mirna
+"mirna-precursor" sub relationship
 	relates precursor
 	relates matured;
 "precursor" sub role;
 "matured" sub role;
 
-"gene-target" sub relation
+## Relationships between the mirna and the genes they target in biological interactions, as
+# documented in papers
+"gene-target" sub relationship
 	relates targeted-gene
 	relates targeting-mirna
 	plays fact
@@ -88,61 +101,69 @@ insert
 "targeted-gene" sub role;
 "targeting-mirna" sub role;
 
-"treatment" sub relation
+## Relationship between drugs and cancers (only inferred)
+"treatment" sub relationship
 	relates target
 	relates therapy;
 
 "target" sub role;
 "therapy" sub role;
 
-"starting-position" sub resource
+## Coordinates of a genetic sequence and actual nucleotide sequence
+"starting-position" sub attribute
 	datatype string;
-"end-position" sub resource
+"end-position" sub attribute
 	datatype string;
-"sequence" sub resource
-	datatype string;
-
-"species" sub resource
+"sequence" sub attribute
 	datatype string;
 
-"chromosome" sub resource
+## Only Homo Sapiens in this dataset
+"species" sub attribute
 	datatype string;
 
-"strand" sub resource
+## The chromosome number of the chromosome where the genetic location is found
+"chromosome" sub attribute
 	datatype string;
 
-"accession-number" sub resource
+## DNA has two complementary strands: this identifies the strand to which the genetic locatio refers to
+"strand" sub attribute
 	datatype string;
 
-"pmid" sub resource
+## One of the way in which mirnas are catalogued
+"accession-number" sub attribute
 	datatype string;
 
-"title" sub resource
+## PubMed identifier of an article
+"pmid" sub attribute
 	datatype string;
 
-"abstract" sub resource
+"title" sub attribute
 	datatype string;
 
-"abstract" sub resource
+"abstract" sub attribute
 	datatype string;
 
-"mirID" sub resource
+## Another way of cataloguing mirnas
+"mirID" sub attribute
 	datatype string;
 
-"name" sub resource
+"name" sub attribute
 	datatype string;
 
-"gene-symbol" sub resource
+## Standard gene code
+"gene-symbol" sub attribute
+	datatype string;
+## Gene identifier in the entrez database
+"entrez-gene-id" sub attribute
 	datatype string;
 
-"entrez-gene-id" sub resource
-	datatype string;
-
-"action-type" sub resource
+## Positive or negative interaction
+"action-type" sub attribute
   datatype string;
 
-"drug-name" sub resource
+"drug-name" sub attribute
 	datatype string;
 
-"degree" sub resource
+## The degree of a documented interaction. I.e. in how many papers it appears
+"degree" sub attribute
   datatype long;

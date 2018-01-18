@@ -1,17 +1,17 @@
 import grakn.client as gc
 
 def compute_degrees(q):
-    graph = gc.Graph("http://localhost:4567", "biomed")
-    result = graph.execute(q)
+    client = gc.Client("http://localhost:4567", "biomed")
+    result = client.execute(q)
     return result
 
 def persist_degrees(deg_dic):
-    graph = gc.Graph("http://localhost:4567", "biomed")
+    client = gc.Client("http://localhost:4567", "biomed")
     for deg in deg_dic:
         q = "match $x id '{}'; insert $x has degree {};"
         for n_id in deg_dic[deg]:
             query = q.format(n_id, deg)
-            graph.execute(query)
+            client.execute(query)
 
 print ("Computing degrees...")
 deg1 = compute_degrees("compute degrees of interaction in interaction, reference;")

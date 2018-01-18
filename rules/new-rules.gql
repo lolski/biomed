@@ -1,11 +1,13 @@
-insert
+define
 
-referenced-treatment sub relation
+## Only used in the following rule. It's the same as a treatment, except that it requires a certain
+# numbers of papers documenting the connection
+referenced-treatment sub relationship
   relates target
   relates therapy;
 
-$referencedTreatments isa inference-rule
-lhs {
+referencedTreatments sub rule
+when {
   $cancer isa cancer;
   $sl isa stem-loop;
   (disease: $cancer, affected: $sl) isa interaction  has degree >= 4;
@@ -16,7 +18,7 @@ lhs {
   (influenced: $gene, chemical: $drug) isa action; $drug isa drug;
 }
 
-rhs {
+then {
   (target: $cancer, therapy: $drug) isa referenced-treatment;
 };
 

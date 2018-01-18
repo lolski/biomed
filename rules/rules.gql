@@ -1,22 +1,23 @@
-insert
+define
 
-
-$inferMature isa inference-rule
- lhs
+## This rule makes sure that if a cancer is related to a stem-loop mirna, it is also related to its mature version
+inferMature sub rule
+when
  {$z isa cancer;
   $a isa stem-loop;
   (disease: $z, affected: $a);
   $b isa mature;
   (precursor: $a, matured: $b);}
- rhs
+ then
  {(disease: $z, affected: $b) isa interaction;};
 
-$inferCancerDrug isa inference-rule
-lhs {
+## This links drugs and cancer via mirna and genes
+inferCancerDrug sub rule
+when {
   (disease: $c, affected: $b);
   (targeting-mirna: $b, targeted-gene: $g);
   (influenced: $g, chemical: $d);
 }
-rhs {
+then {
   (target: $c, therapy: $d) isa treatment;
 };
