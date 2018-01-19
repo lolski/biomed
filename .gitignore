@@ -1,3 +1,5 @@
+.idea
+
 \.DS_Store
 *.jar
 analytics/target/
@@ -8,3 +10,4 @@ bin/
 include/
 lib/
 pip-selfcheck.json
+.python-version
