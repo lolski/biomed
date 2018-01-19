@@ -1,6 +1,13 @@
+.idea
 
 \.DS_Store
-
 *.jar
-
 analytics/target/
+
+# virtualenv
+.Python
+bin/
+include/
+lib/
+pip-selfcheck.json
+.python-version
