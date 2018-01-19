@@ -27,6 +27,7 @@ $ virtualenv --system-site-packages -p python3 .
 ```
 $ cd <path-to-biomed-poc-directory>
 $ source bin/activate
+$ pip install -r requirements.txt
 $ ./load_to_graql.sh <path-to-grakn-directory>
 ```
 
